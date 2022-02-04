@@ -9,7 +9,7 @@
 # Nothing original here - just a couple of things to run manually to save power after boot time.
 
 # turn off the HDMI port to save power
-# note: may need revision for Bullseye
+# note: this works in Buster or earlier - not Bullseye (might work if using dtoverlay=vc4-fkms-v3d in /boot/config.txt)
 /opt/vc/bin/tvservice --off
 
 ### configure LEDs for B-sized Pis like the 2B, 3A+, 4B
