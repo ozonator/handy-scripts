@@ -6,15 +6,18 @@
 # The LEDs are handy for that, and since I tend to run Pis headless, it's useful to leave the HDMI port on, in case I need to
 # plug in a display to see what's going on if a Pi is unreachable after boot.
 #
-# Nothing original here - just a couple of things to run manually to save power after boot time.
+# Nothing original here - just a couple of things to run manually to save power after boot time. Comment or uncomment lines as needed.
 
 # turn off the HDMI port to save power
 # note: this works in Buster or earlier - not Bullseye (might work if using dtoverlay=vc4-fkms-v3d in /boot/config.txt)
-/opt/vc/bin/tvservice --off
+#/opt/vc/bin/tvservice --off
 
 ### configure LEDs for B-sized Pis like the 2B, 3A+, 4B
 
 # Turn the power LED off (0) or on (1)
+echo none | sudo tee /sys/class/leds/led0/trigger
+echo 0 | sudo tee /sys/class/leds/led0/brightness
+echo none | sudo tee /sys/class/leds/led1/trigger
 echo 0 | sudo tee /sys/class/leds/led1/brightness
 
 # Optional: set the power LED to GPIO mode (set 'off' by default)
