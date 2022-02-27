@@ -7,9 +7,12 @@
 # This script seems to do the trick. I run it from /etc/crontab once an hour:
 # 3  *	* * *   root	/usr/local/bin/checknetwork.sh
 
-# see if we can reach the gateway (or some other reliable local device)
-/bin/ping -c4 10.0.1.1 > /dev/null
- 
+# see if we can reach the local router (or some other reliable local device)
+
+ROUTER=$(ip route | grep default | awk '{print $3}')
+
+/bin/ping -c2 $ROUTER > /dev/null
+
 if [ $? != 0 ] 
 then
   #nuclear option
