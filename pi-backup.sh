@@ -1,6 +1,6 @@
 #!/bin/bash
-# backup script for a Pi -- packages, /etc/, and /home/pi, as well as key service configs
-# version: 20220207
+# backup script for a Pi -- packages, /etc/, and /home/pi, as well as service configs for homebridge and pihole
+# version: 20220312
 #
 # Requires: tar, rclone -- https://rclone.org
 # Optional: age (for additional encryption) - https://github.com/FiloSottile/age
