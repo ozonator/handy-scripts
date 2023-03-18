@@ -14,11 +14,15 @@
 
 ### configure LEDs for B-sized Pis like the 2B, 3A+, 4B
 
-# Turn the power LED off (0) or on (1)
-echo none | sudo tee /sys/class/leds/led0/trigger
-echo 0 | sudo tee /sys/class/leds/led0/brightness
-echo none | sudo tee /sys/class/leds/led1/trigger
-echo 0 | sudo tee /sys/class/leds/led1/brightness
+# Turn the power LED off (0) or on (1) - for 5.x kernels and prior
+#echo none | sudo tee /sys/class/leds/led0/trigger
+#echo 0 | sudo tee /sys/class/leds/led0/brightness
+#echo none | sudo tee /sys/class/leds/led1/trigger
+#echo 0 | sudo tee /sys/class/leds/led1/brightness
+
+# Turn the power LED off (0) or on (255) - for 6.x kernels
+echo none | sudo tee /sys/class/leds/PWR/trigger
+echo 0 | sudo tee /sys/class/leds/PWR/brightness
 
 # Optional: set the power LED to GPIO mode (set 'off' by default)
 #echo gpio | sudo tee /sys/class/leds/led1/trigger
@@ -31,7 +35,12 @@ echo 0 | sudo tee /sys/class/leds/led1/brightness
 
 ### comment the above and uncomment the 'echo' lines below to configure LEDs for a Pi Zero
 
-# Set the Pi Zero activity LED trigger to 'none'
+# Set the Pi Zero activity LED trigger to 'none' - kernels 5.x and earlier
 #echo none | sudo tee /sys/class/leds/led0/trigger
 # Turn off the Pi Zero activity LED.
 #echo 0 | sudo tee /sys/class/leds/led0/brightness
+
+# Set the Pi Zero activity LED trigger to 'none' - kernel 6.x
+#echo none | sudo tee /sys/class/leds/ACT/trigger
+# Turn off the Pi Zero activity LED.
+#echo 0 | sudo tee /sys/class/leds/ACT/brightness
